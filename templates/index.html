@@ -1,0 +1,23 @@
+<h1>Things that piss me off today</h1>
+
+{% if session.user_id %}
+
+<i>{{ session.user_name }}</i> is logged in and pissed.
+<br><br>
+
+<a href="/logout">Logout</a>
+
+{% else %}
+
+Login
+<br>
+<form action="/login" method="post">
+Username: <input type="text" name="username"><br>
+Passeord: <input type="password" name="password"><br>
+  <input type="submit" value="Login">
+</form>
+<br>
+
+Create new user <a href="/signin">click here</a>
+
+{% endif %}
