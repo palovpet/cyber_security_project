@@ -1,9 +1,9 @@
-Cyber Security Project I
+## Cyber Security Project I
 
-Security issues
+### Security issues
 
-CSFR
-SQL Injection
-Broken access control
-Cryptografic failures
-Security misconfiguration
+- CSFR
+- SQL Injection
+- Broken access control
+- Cryptografic failures
+- Security misconfiguration
