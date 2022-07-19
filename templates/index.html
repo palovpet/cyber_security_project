@@ -5,7 +5,21 @@
 <i>{{ session.user_name }}</i> is logged in and pissed.
 <br><br>
 
+View things that has pissed me off <a href="/mythings">click here</a>
+<br><br>
+Add new thing
+<br>
+<form action="/mythings" method="post">
+Thing: <input type="text" name="thing"><br>
+  <input type="submit" value="Add">
+</form>
+<br>
+
 <a href="/logout">Logout</a>
+
+<br><br>
+
+<a href="/admin">For admins only pls don't click :(</a>
 
 {% else %}
 

@@ -1,12 +1,13 @@
 CREATE TABLE endusers (
     id SERIAL PRIMARY KEY,
 	username TEXT UNIQUE,
-	password TEXT
+	password TEXT,
+	admin INTEGER
 );
-
 
 CREATE TABLE things (
     id SERIAL PRIMARY KEY,
 	owner_id INTEGER REFERENCES endusers,
-	thing TEXT
+	thing TEXT,
+	hits INTEGER
 );

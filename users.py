@@ -7,8 +7,9 @@ def login(username, password):
     sql = "SELECT id, password FROM endusers WHERE username=:username"
     result = db.session.execute(sql, {"username": username})
     user = result.fetchone()
-    print(user.password)
-    print(user.password == password)
+
+    if not user.password == password:
+        return False
 
 # Flaw 4 fix (replace previous if not)
 #      if not check_password_hash(user.password, password):
@@ -27,10 +28,11 @@ def logout():
 
 
 def signin(username, password):
+    admin = 0;
     try:
-        sql = "INSERT INTO endusers (username,password) VALUES (:username,:password)"
+        sql = "INSERT INTO endusers (username, password, admin) VALUES (:username,:password, :admin)"
         db.session.execute(
-            sql, {"username": username, "password": password})
+            sql, {"username": username, "password": password, "admin":admin})
         db.session.commit()
     except:
         return False
@@ -48,9 +50,28 @@ def signin(username, password):
 #         return False
 #     return True
 
-# Flaw 3 fix (add)
-# def user_id():
-#     return session.get("user_id", 0)
+def user_id():
+    return session.get("user_id", 0)
+
+def get_id_with_name(username):
+    sql = "SELECT id FROM endusers WHERE username=:username"
+    result = db.session.execute(sql, {"username": username})
+    user_id = result.fetchone()[0]
+    return user_id
+
+def get_name():
+    id = user_id()
+    sql = "SELECT username FROM endusers WHERE id=:id"
+    result = db.session.execute(sql, {"id": id})
+    user_name = result.fetchone()[0]
+    return user_name
+
+def is_admin():
+    id = user_id()
+    sql = "SELECT admin FROM endusers WHERE id=:id"
+    result = db.session.execute(sql, {"id":id})
+    admin = result.fetchone()[0]
+    return admin==1
 
 # Flaw 1 fix (add)
 # def check_csrf():

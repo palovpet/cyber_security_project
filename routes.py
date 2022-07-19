@@ -2,6 +2,7 @@
 from flask import render_template, request, redirect
 from app import app
 import users
+import things
 
 @app.route("/")
 def index():
@@ -34,7 +35,27 @@ def signin():
         if password1 != password2:
             return render_template("error.html", message="Passwords must match")
         if not users.signin(username, password1):
-            return render_template("error.html",
-                                   message="Username already in use or other error")
+            return render_template("error.html", message="Username already in use or other error")
         users.login(username, password1)
         return redirect("/")        
+
+
+@app.route("/allmythings/<name>")
+def all_my_things(name):
+    return render_template("allmythings.html", mythings=things.view_things(users.get_id_with_name(name)))
+
+@app.route("/mythings", methods=["POST", "GET"])
+def mythings():
+    if request.method == "POST":
+        thing = request.form["thing"]
+        if thing == "":
+            return render_template("error.html", message="Can't be empty")
+        if not things.add_new(thing):
+            return render_template("error.html", message="Adding a new thing didn't work, try again")
+        return redirect("/")    
+    if request.method == "GET":
+        return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name())
+
+@app.route("/admin", methods=["GET"])
+def adminview():
+    return render_template("admin.html", admin=users.is_admin())
