@@ -41,3 +41,8 @@ def view_top3(owner_id):
     sql = "SELECT thing FROM things WHERE owner_id=:owner_id ORDER BY hits DESC LIMIT 3"
     result = db.session.execute(sql, {"owner_id": owner_id})
     return result.fetchall()  
+
+def search_things(criteria):
+    print(criteria)
+    owner_id = users.user_id()    
+    return db.session.execute("SELECT thing FROM things WHERE owner_id='%s' AND thing LIKE '%%%s%%'" % (owner_id, criteria)).fetchall()

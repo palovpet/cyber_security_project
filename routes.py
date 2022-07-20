@@ -56,6 +56,13 @@ def mythings():
     if request.method == "GET":
         return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name())
 
+@app.route("/searchmythings", methods=["POST"])
+def search_my_things():
+    search_criteria = request.form["thing"]
+    if search_criteria == "":
+        return render_template("error.html", message="Can't be empty")
+    return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name(), search=things.search_things(search_criteria))            
+
 @app.route("/admin", methods=["GET"])
 def adminview():
     return render_template("admin.html", admin=users.is_admin())

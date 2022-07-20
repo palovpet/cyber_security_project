@@ -5,7 +5,24 @@ Here are my TOP 3 things
 {% for thing in mythings %}
 <br>{{ thing[0] }}<br>
 {% endfor %}
-
+<br><br>
 <a href="/allmythings/{{ name }}">All my things</a>
+<br><br>
+Search for things that has pissed you off
+<br><br>
+
+<br>
+<form action="/searchmythings" method="post">
+Word or letter: <input type="text" name="thing"><br>
+  <input type="submit" value="Search">
+</form>
+<br>
 
 <br><br>
+
+{% for s in search %}
+<br>{{ s[0] }}<br>
+{% endfor %}
+
+<br><br>
+<a href="/">Return to homepage</a>
