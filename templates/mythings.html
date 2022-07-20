@@ -15,14 +15,26 @@ Search for things that has pissed you off
 <form action="/searchmythings" method="post">
 Word or letter: <input type="text" name="thing"><br>
   <input type="submit" value="Search">
+
+<!-- Flaw 1 fix (add)
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}"> -->
+
 </form>
 <br>
 
 <br><br>
 
+{% if result_found %}
+
 {% for s in search %}
 <br>{{ s[0] }}<br>
 {% endfor %}
+
+{% else %}
+
+No search results
+
+{% endif %}
 
 <br><br>
 <a href="/">Return to homepage</a>

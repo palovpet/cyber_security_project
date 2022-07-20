@@ -12,6 +12,10 @@ Add new thing
 <form action="/mythings" method="post">
 Thing: <input type="text" name="thing"><br>
   <input type="submit" value="Add">
+ 
+<!-- Flaw 1 fix (add)
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}"> -->
+
 </form>
 <br>
 
@@ -29,6 +33,10 @@ Login
 Username: <input type="text" name="username"><br>
 Passeord: <input type="password" name="password"><br>
   <input type="submit" value="Login">
+
+<!-- Flaw 1 fix (add)
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}"> -->
+  
 </form>
 <br>
 

@@ -13,6 +13,10 @@ def login():
     if request.method == "GET":
         return render_template("index.html")
     if request.method == "POST":
+
+# Flaw 1 fix (add)
+#         users.check_csfr()
+
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username, password):
@@ -29,6 +33,10 @@ def signin():
     if request.method == "GET":
         return render_template("signin.html")
     if request.method == "POST":
+
+# Flaw 1 fix (add)
+#         users.check_csfr()
+
         username = request.form["username"]
         password1 = request.form["password1"]
         password2 = request.form["password2"]
@@ -47,6 +55,10 @@ def all_my_things(name):
 @app.route("/mythings", methods=["POST", "GET"])
 def mythings():
     if request.method == "POST":
+
+# Flaw 1 fix (add)
+#         users.check_csfr()
+
         thing = request.form["thing"]
         if thing == "":
             return render_template("error.html", message="Can't be empty")
@@ -58,10 +70,18 @@ def mythings():
 
 @app.route("/searchmythings", methods=["POST"])
 def search_my_things():
+
+# Flaw 1 fix (add)
+#         users.check_csfr()
+
     search_criteria = request.form["thing"]
     if search_criteria == "":
         return render_template("error.html", message="Can't be empty")
-    return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name(), search=things.search_things(search_criteria))            
+    search_result = things.search_things(search_criteria) 
+    result_found = True
+    if search_result == "No search results":
+        result_found = False   
+    return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name(), result_found=result_found, search=things.search_things(search_criteria))            
 
 @app.route("/admin", methods=["GET"])
 def adminview():
