@@ -1,9 +1,17 @@
 {% if admin %}
 
 You are admin! Here are everyones things:
+<br><br>
+
+{% for e in everyonesthings %}
+<br>{{ e[0] }} : {{ e[1] }}<br>
+{% endfor %}
 
 {% else %}
 
 Not admin, why click :(
 
 {% endif %}
+
+<br><br>
+<a href="/">Return to homepage</a>

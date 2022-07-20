@@ -65,4 +65,4 @@ def search_my_things():
 
 @app.route("/admin", methods=["GET"])
 def adminview():
-    return render_template("admin.html", admin=users.is_admin())
+    return render_template("admin.html", admin=users.is_admin(), everyonesthings=things.get_everyones_things())
