@@ -1,4 +1,8 @@
-<h4>Create new user</h4>
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Create new user</h1>
 
 <form action="/signin" method="post">
 Username: <input type="text" name="username"><br>
@@ -7,4 +11,8 @@ Repeat password: <input type="password" name="password2"><br>
   <input type="submit" value="Create new">
 </form>
 
+<br><br><br>
+
 <a href="/">Return to homepage</a>
+
+{% endblock %}

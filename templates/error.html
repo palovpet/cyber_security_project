@@ -1,2 +1,11 @@
-Error: {{ message }} <br>
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Error</h1>
+
+<br>{{ message }}
+<br><br><br>
 <a href="/">Return to homepage</a>
+
+{% endblock %}

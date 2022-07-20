@@ -1,28 +1,31 @@
-<!-- Flaw 3 fix (validate user) -->
+{% extends "layout.html" %}
 
-Here are my TOP 3 things
+{% block content %}
+
+<h1>TOP 3 - Things that have annoyed you </h1>
 <br><br>
 {% for thing in mythings %}
 <br>{{ thing[0] }}<br>
 {% endfor %}
-<br><br>
-<a href="/allmythings/{{ name }}">All my things</a>
-<br><br>
-Search for things that has pissed you off
-<br><br>
+<br><br><br>
+
+To view all the things that have ever pissed you off: <a href="/allmythings/{{ name }}">Click here</a>
+
+<br><br><br>
+<h2>Search for things that has pissed you off</h2>
+
 
 <br>
 <form action="/searchmythings" method="post">
-Word or letter: <input type="text" name="thing"><br>
+Name of thing: <input type="text" name="thing">
   <input type="submit" value="Search">
 
 <!-- Flaw 1 fix (add)
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}"> -->
 
 </form>
-<br>
 
-<br><br>
+<br>
 
 {% if result_found %}
 
@@ -34,5 +37,8 @@ This has pissed you off {{ search[0] }} times
 
 {% endif %}
 
-<br><br>
+<br><br><br>
+
 <a href="/">Return to homepage</a>
+
+{% endblock %}

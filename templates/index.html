@@ -1,45 +1,58 @@
-<h1>Things that piss me off today</h1>
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>A safe place to share any discomfort</h1>
+
+<br><br><br>
 
 {% if session.user_id %}
 
-<i>{{ session.user_name }}</i> is logged in and pissed.
-<br><br>
+Welcome <b>{{ session.user_name }}</b>, I am sensing some discomfort from your end. <br> You can share here what is causing the pain in your rear, 
+I promise, this is a <b><i>totally safe</i></b> place to share.
 
-View things that has pissed me off <a href="/mythings">click here</a>
-<br><br>
-Add new thing
-<br>
+<br><br><br>
+
+Things that have previously annoyed you: <a href="/mythings">click here</a>
+
+<br><br><br>
+
+<h2>Add a new thing</h2>
 <form action="/mythings" method="post">
-Thing: <input type="text" name="thing"><br>
+Thing: <input type="text" name="thing">
   <input type="submit" value="Add">
  
 <!-- Flaw 1 fix (add)
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}"> -->
 
 </form>
-<br>
+<br><br>
+
+<a href="/admin">For admins only pls don't click if not admin <3 </a>
+
+<br><br><br>
 
 <a href="/logout">Logout</a>
 
 <br><br>
 
-<a href="/admin">For admins only pls don't click :(</a>
-
 {% else %}
 
-Login
-<br>
+<br><br>
+
 <form action="/login" method="post">
 Username: <input type="text" name="username"><br>
-Passeord: <input type="password" name="password"><br>
+Password: <input type="password" name="password"><br>
   <input type="submit" value="Login">
 
 <!-- Flaw 1 fix (add)
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}"> -->
-  
+
 </form>
 <br>
-
-Create new user <a href="/signin">click here</a>
+<h2>Create new user: <a href="/signin">click here</a></h2>
 
 {% endif %}
+
+{% endblock %}

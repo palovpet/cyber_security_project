@@ -1,4 +1,8 @@
-All my things
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>All the things that have ever pissed me off</h1>
 <br><br>
 {% for thing in mythings %}
 <br>{{ thing[0] }}<br>
@@ -6,3 +10,5 @@ All my things
 
 <br><br>
 <a href="/">Return to homepage</a>
+
+{% endblock %}

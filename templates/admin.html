@@ -1,6 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
 {% if admin %}
 
-You are admin! Here are everyones things:
+<h1>List of everyones thinks that piss them off</h1>
 <br><br>
 
 {% for e in everyonesthings %}
@@ -15,3 +19,5 @@ Not admin, why click :(
 
 <br><br>
 <a href="/">Return to homepage</a>
+
+{% endblock %}
