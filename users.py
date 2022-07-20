@@ -66,6 +66,10 @@ def get_name():
     user_name = result.fetchone()[0]
     return user_name
 
+# Flaw 3 fix (add)
+# def user_accessing_own_info(username):
+#     return user_id() == get_id_with_name(username)
+
 def is_admin():
     id = user_id()
     sql = "SELECT admin FROM endusers WHERE id=:id"
