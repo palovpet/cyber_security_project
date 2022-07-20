@@ -42,12 +42,20 @@ def view_top3(owner_id):
     result = db.session.execute(sql, {"owner_id": owner_id})
     return result.fetchall()  
 
-def search_things(criteria):
+def search_things(search_criteria):
     owner_id = users.user_id()    
-    result = db.session.execute("SELECT thing FROM things WHERE owner_id='%s' AND thing LIKE '%%%s%%'" % (owner_id, criteria)).fetchall()
+    result = db.session.execute("SELECT hits FROM things WHERE owner_id='%s' AND thing LIKE '%%%s%%'" % (owner_id, search_criteria)).fetchall()
+
+# Flaw 2 fix (delete the result-query above and replace with the one below)
+#     sql = "SELECT hits FROM things WHERE owner_id=:owner_id AND thing LIKE :search_criteria"
+#     result = db.session.execute(sql, {"owner_id": owner_id, "search_criteria":search_criteria}).fetchall()
+
     if len(result) == 0:
-        result = "No search results"
-    return result
+        return "No search results"
+
+    result_trimmed = str(result[0]).strip("(,)")    
+    return result_trimmed
+  
 
 def get_everyones_things():
     return db.session.execute("SELECT e.username, t.thing FROM endusers e, things t WHERE e.id=t.owner_id").fetchall()

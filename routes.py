@@ -66,7 +66,7 @@ def mythings():
             return render_template("error.html", message="Adding a new thing didn't work, try again")
         return redirect("/")    
     if request.method == "GET":
-        return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name())
+        return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name(), result_found=False, emptyresult="")
 
 @app.route("/searchmythings", methods=["POST"])
 def search_my_things():
@@ -79,9 +79,11 @@ def search_my_things():
         return render_template("error.html", message="Can't be empty")
     search_result = things.search_things(search_criteria) 
     result_found = True
+    emptyresult = ""
     if search_result == "No search results":
-        result_found = False   
-    return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name(), result_found=result_found, search=things.search_things(search_criteria))            
+        result_found = False
+        emptyresult = "This hasn't pissed you off yet! Maybe go and add it to list?"   
+    return render_template("mythings.html", mythings=things.view_top3(users.user_id()), name=users.get_name(), result_found=result_found, search=things.search_things(search_criteria), emptyresult=emptyresult)            
 
 @app.route("/admin", methods=["GET"])
 def adminview():

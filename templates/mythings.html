@@ -26,13 +26,11 @@ Word or letter: <input type="text" name="thing"><br>
 
 {% if result_found %}
 
-{% for s in search %}
-<br>{{ s[0] }}<br>
-{% endfor %}
+This has pissed you off {{ search[0] }} times
 
 {% else %}
 
-No search results
+{{ emptyresult }}
 
 {% endif %}
 
