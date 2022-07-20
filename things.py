@@ -12,7 +12,7 @@ def thing_id(new_thing):
 
 def add_new(thing):
     owner_id = users.user_id()
-    hits = 0
+    hits = 1
     id = thing_id(thing)
     if id > 0:
         add_hits(id)
