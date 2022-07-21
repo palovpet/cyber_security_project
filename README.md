@@ -6,7 +6,7 @@ Unlike the front page is promising, the application is not safe. It contains fiv
 
 The application is available in heroku: [click](https://csp-ttam.herokuapp.com/)
 
-*This project is made for the course Cyber Security Base: Course Project I TKT200093.*
+(If you are using some other browser than chrome you might need to refresh the heroku-page a few times)
 
 ### Security issues in the application
 
@@ -16,4 +16,7 @@ The application is available in heroku: [click](https://csp-ttam.herokuapp.com/)
 - Flaw 4: Cryptographic Failure
 - Flaw 5: Security misconfiguration
 
-The fixes for the issues are in the code as comments, they are also explaned in the report: [click](https://github.com/palovpet/cyber_security_project/blob/master/report.md) .
+The fixes for the issues are in the code as comments, they are also explaned in the report: [click](https://github.com/palovpet/cyber_security_project/blob/master/report.md).
+
+
+*This project is made for the course Cyber Security Base: Course Project I TKT200093.*
