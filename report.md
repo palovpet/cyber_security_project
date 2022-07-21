@@ -1,8 +1,10 @@
 # Cyber Security Base: Course Project I
 
+This application is the course project of the Cyber Security Base –course. It contains five security flaws, four of which are from the [OWASP top ten list of 2021](https://owasp.org/www-project-top-ten/) and one is CSFR. 
+
 ### Installing and running the web application
 
-The application is available in heroku: [click](https://csp-ttam.herokuapp.com/). The testing has been done using 
+The application is coded using Python and Flask, and to make running it easier it is available in heroku: [click](https://csp-ttam.herokuapp.com/). The testing has been done using 
 chrome and that is the browser it performs most optimally with. When using some other browser I noticed sometimes needing to 
 refresh the pages again to get them working. 
 
@@ -118,7 +120,7 @@ Use the method to check the person is allowed to view the information or re-rout
 
 https://github.com/palovpet/cyber_security_project/blob/4c9e56ce047fd334e71837e45c39661c83bed972/routes.py#L46
 
-## Flaw 4: Cryptographic Failure
+## 4: Cryptographic Failure
 ### Flaw:
 The passwords are saved to the database as regular text, thus making the users very voulnerable if an attacker would 
 gain access to the database, for example with the SQL Injection described previously.
@@ -148,17 +150,19 @@ and login-method
 
 https://github.com/palovpet/cyber_security_project/blob/44793c2a43db96cdb6cf2c0d720af84cee5edf8b/users.py#L14
 
-## Flaw 5: Security misconfiguration
+## 5: Security misconfiguration
 ### Flaw:
 The developer of this application has done thorough production testing in heroku, and created a admin test user for
 this purpose. Unfortunately she used very guessable username and password, and left the test user active after launching
  the application. As admins can view everything anyone has ever saved, if someone would guess the user and password 
  (or get them with the SQL injection) they'd see everything. The tempting link for admin stuff is also left to the index.html 
  to get a hacker curious. 
+ 
+ The tempting link:
   
  https://github.com/palovpet/cyber_security_project/blob/4c9e56ce047fd334e71837e45c39661c83bed972/templates/index.html#L32
   
 ### Fix:
-To fix the issue the temtpting link should be deleted, as it doesn't really serve a purpose in the application. When logged in the admin could still view
+To fix the issue the tempting link should be deleted, as it doesn't really serve a purpose in the application. When logged in the admin could still view
  the admin.html by typing the URL. Obviously the developer should have also deleted or deactivated the admin test user after releasing the application, and
   if admin user is needed the username and password should be something more secure than *admintester*.
