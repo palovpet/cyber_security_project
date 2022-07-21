@@ -13,10 +13,6 @@ def login():
     if request.method == "GET":
         return render_template("index.html")
     if request.method == "POST":
-
-# Flaw 1 fix (add)
-#         users.check_csfr()
-
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username, password):
