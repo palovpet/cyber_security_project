@@ -1,10 +1,10 @@
 ## Things that annoy me - the unsafe application
 
-'Things that annoy me' is a place to lighten one's heart by typing what is causing them to be pissed off. 
+__Things that annoy me__ is a place to lighten one's heart by typing what is causing them to be pissed off. 
 A user can also view their TOP 3 list of things that have annoyed them, as well as view every annoying thing they have ever recorded. 
 Unlike the front page is promising, the application is not safe. It contains five security flaws from the OWASP Top Ten list of 2021.
 
-The application is available in heroku: LINK HERE
+The application is available in heroku: [click](https://csp-ttam.herokuapp.com/)
 
 *This project is made for the course Cyber Security Base: Course Project I TKT200093.*
 
@@ -16,4 +16,4 @@ The application is available in heroku: LINK HERE
 - Flaw 4: Cryptographic Failure
 - Flaw 5: Security misconfiguration
 
-The fixes for the issues are in the code as comments, they are also explaned in the report found: LINK HERE.
+The fixes for the issues are in the code as comments, they are also explaned in the report: [click](https://github.com/palovpet/cyber_security_project/blob/master/report.md) .
