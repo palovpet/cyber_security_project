@@ -50,9 +50,11 @@ def signin():
 
 @app.route("/allmythings/<name>")
 def all_my_things(name):
+
 # Flaw 3 fix (add)    
 #     if not users.user_accessing_own_info(name):
 #         return render_template("error.html", message="Buuu you are trying to hack into someone elses stuff")
+
     return render_template("allmythings.html", mythings=things.view_things(users.get_id_with_name(name)))
 
 @app.route("/mythings", methods=["POST", "GET"])

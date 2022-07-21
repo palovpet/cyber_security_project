@@ -29,7 +29,11 @@ Name of thing: <input type="text" name="thing">
 
 {% if result_found %}
 
-This has pissed you off {{ search[0] }} times
+<i><b>{% for s in search %}
+{{ s[0] }}
+{% endfor %}</i></b>
+
+is on the list, so it has previously pissed you off.
 
 {% else %}
 
