@@ -29,10 +29,6 @@ def signin():
     if request.method == "GET":
         return render_template("signin.html")
     if request.method == "POST":
-
-# Flaw 1 fix (add)
-#         users.check_csfr()
-
         username = request.form["username"]
         password1 = request.form["password1"]
         password2 = request.form["password2"]
